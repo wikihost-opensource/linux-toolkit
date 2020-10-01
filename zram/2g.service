@@ -1,0 +1,15 @@
+[Unit]
+Description=Zram-based swap (compressed RAM block devices)
+
+[Service]
+Type=oneshot
+ExecStartPre=/usr/sbin/modprobe zram
+ExecStartPre=/usr/sbin/zramctl -s 2g /dev/zram0
+ExecStartPre=/usr/sbin/mkswap /dev/zram0
+ExecStart=/usr/sbin/swapon /dev/zram0
+ExecStop=/usr/sbin/swapoff /dev/zram0
+ExecStop=/usr/sbin/modprobe -r zram
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
