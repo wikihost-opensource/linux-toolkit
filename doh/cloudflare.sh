@@ -25,7 +25,8 @@ find_download_tool(){
 }
 
 download_cloudflared(){
-    __run $download_tool_path $donwload_tool_args /tmp/cloudflared https://github.com/cloudflare/cloudflared/releases/download/$cloudflared_version/cloudflared-li$    mv -f /tmp/cloudflared /usr/local/bin/cloudflared
+    __run $download_tool_path $donwload_tool_args /tmp/cloudflared https://github.com/cloudflare/cloudflared/releases/download/$cloudflared_version/cloudflared-linux-$arch
+    mv -f /tmp/cloudflared /usr/local/bin/cloudflared
     chmod +x /usr/local/bin/cloudflared
 }
 
