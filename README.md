@@ -17,3 +17,8 @@ wget -O /etc/systemd/system/zram.service https://github.com/wikihost-opensource/
 ```
 wget -O /etc/systemd/system/zram.service https://github.com/wikihost-opensource/centos-init/raw/main/zram/2g.service && systemctl enable zram && systemctl restart zram
 ```
+# Using DoH Service
+## Cloudflare
+```
+bash -c "$(wget -qO - https://github.com/wikihost-opensource/centos-init/raw/main/doh/cloudflare.sh)"
+```
