@@ -25,5 +25,5 @@ bash -c "$(wget -qO - https://github.com/wikihost-opensource/centos-init/raw/mai
 ## Enable BBR
 ### For CentOS 7
 ```
-bash -c "$(wget -qO - https://github.com/wikihost-opensource/centos-init/raw/main/network/bbr/centos7.sh)
+bash -c "$(wget -qO - https://github.com/wikihost-opensource/centos-init/raw/main/network/bbr/centos7.sh)"
 ```
