@@ -4,7 +4,7 @@ if [ ! -f "/etc/redhat-release" ]; then
     exit;
 fi
 
-if [ -z "cat /etc/redhat-release | grep 'release 7'" ]; then
+if [ -z "`cat /etc/redhat-release | grep 'release 7'`" ]; then
     echo "ERROR: This script only for CentOS Linux 7 (Aka CentOS 7)"
     exit;
 fi;
