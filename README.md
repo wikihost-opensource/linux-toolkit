@@ -1,4 +1,5 @@
 # CentOS first script to run
+Just copy and paste to your shell, Press [enter] and the config will be automatically deploy
 
 ## Setup zram
 ### 16G zram setup
