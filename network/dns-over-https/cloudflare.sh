@@ -2,7 +2,7 @@
 echo "Begin" >> ~/wikihost_cloudflare_doh_install.log
 download_tool_path=''
 donwload_tool_args=''
-cloudflared_version='2020.9.3'
+cloudflared_version='2020.11.11'
 arch='amd64'
 
 find_download_tool(){
