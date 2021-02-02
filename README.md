@@ -1,7 +1,7 @@
-# CentOS first script to run
+# How to use
 Just copy and paste to your shell, Press [enter] and the config will be automatically deploy
 
-## Setup zram
+## Setup zram (systemd required)
 ### 16G zram setup
 ```
 wget -O /etc/systemd/system/zram.service https://github.com/wikihost-opensource/centos-init/raw/main/system/zram/16g.service && systemctl enable zram && systemctl restart zram
