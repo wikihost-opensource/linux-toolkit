@@ -2,7 +2,7 @@
 Just copy and paste to your shell, Press [enter] and the config will be automatically deploy
 
 ## Setup zram (systemd required)
-[More info](https://github.com/wikihost-opensource/linux-toolkit/system/zram)
+[More info](https://github.com/wikihost-opensource/linux-toolkit/tree/main/system/zram)
 
 
 ## Using DoH Service
