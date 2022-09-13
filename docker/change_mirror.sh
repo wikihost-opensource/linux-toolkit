@@ -9,8 +9,8 @@ if [ $? -ne 0 ];then
 fi;
 echo "[NOTICE] Checking this host is in china mainland..."
 
-RESULT=`wget --no-check-certificate -qO - https://ifconfig.co/country-iso`
-if [ "$RESULT" == "CN" ];then
+RESULT=`wget --no-check-certificate -qO - https://ipapi.co/country_code_iso3/`
+if [ "$RESULT" == "CHN" ];then
     echo "[INFO] Selected CN Docker mirror server"
     CN_MODE="1"
     MIRROR_URL="https://docker.mirrors.ustc.edu.cn/"
@@ -26,9 +26,21 @@ fi;
 
 echo "[INFO] writing /etc/docker/daemon.json"
 
-echo "{
+if [ "$CN_MODE" -eq 1 ];then
+    echo "{
   \"registry-mirrors\": [\"https://mirror.gcr.io\"]
 }" > /etc/docker/daemon.json
+else
+    echo "{
+  \"registry-mirrors\": [
+    \"https://hub-mirror.c.163.com\",
+    \"https://docker.nju.edu.cn\",
+    \"https://dockerproxy.com\",
+    \"https://hub-mirror.c.163.com\",
+    \"https://mirror.baidubce.com\"
+  ]
+}" > /etc/docker/daemon.json
+fi;
 
 echo "[INFO] restarting docker daemon"
 systemctl restart docker
