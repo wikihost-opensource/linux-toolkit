@@ -1,6 +1,5 @@
 #!/bin/bash
 CN_MODE="0"
-MIRROR_URL="https://mirror.gcr.io"
 
 systemctl status docker > /dev/null
 if [ $? -ne 0 ];then
@@ -9,15 +8,13 @@ if [ $? -ne 0 ];then
 fi;
 echo "[NOTICE] Checking this host is in china mainland..."
 
-RESULT=`wget --no-check-certificate -qO - https://ipapi.co/country_code_iso3/`
+RESULT=`wget --no-check-certificate -qO - https://ipapi.co/country_code_iso3`
 if [ "$RESULT" == "CHN" ];then
     echo "[INFO] Selected CN Docker mirror server"
     CN_MODE="1"
-    MIRROR_URL="https://docker.mirrors.ustc.edu.cn/"
 else
     echo "[INFO] Selected Google docker mirror server"
 fi;
-echo "[INFO] New mirror server url: ${MIRROR_URL}"
 
 if [ -f "/etc/docker/daemon.json" ];then
     echo "[ERROR] /etc/docker/daemon.json exists."
