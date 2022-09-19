@@ -23,7 +23,7 @@ fi;
 
 echo "[INFO] writing /etc/docker/daemon.json"
 
-if [ "$CN_MODE" -eq 1 ];then
+if [ "$CN_MODE" -eq 0 ];then
     echo "{
   \"registry-mirrors\": [\"https://mirror.gcr.io\"]
 }" > /etc/docker/daemon.json
