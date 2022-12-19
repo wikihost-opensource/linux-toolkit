@@ -12,8 +12,6 @@ RESULT=`wget --no-check-certificate -qO - https://ipapi.co/country_code_iso3`
 if [ "$RESULT" == "CHN" ];then
     echo "[INFO] Selected CN Docker mirror server"
     CN_MODE="1"
-else
-    echo "[INFO] Selected Google docker mirror server"
 fi;
 
 if [ -f "/etc/docker/daemon.json" ];then
@@ -31,12 +29,11 @@ if [ "$CN_MODE" -eq 0 ];then
   \"registry-mirrors\": [\"https://registry.ipv6.docker.com\"]
 }" > /etc/docker/daemon.json
     else
+      echo "[INFO] Selected Google docker mirror server"
       echo "{
   \"registry-mirrors\": [\"https://mirror.gcr.io\"]
 }" > /etc/docker/daemon.json
     fi;
-    if [ "$CN_MODE" -eq 0 ];then
-
 else
     echo "{
   \"registry-mirrors\": [
