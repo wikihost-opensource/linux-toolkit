@@ -24,9 +24,19 @@ fi;
 echo "[INFO] writing /etc/docker/daemon.json"
 
 if [ "$CN_MODE" -eq 0 ];then
-    echo "{
+    wget -6 --no-check-certificate -q -O /dev/null https://ipapi.co/country_code_iso3
+    if [ $? -eq 0 ];then
+      echo "[INFO] Server support ipv6, using registry.ipv6.docker.com"
+      echo "{
+  \"registry-mirrors\": [\"https://registry.ipv6.docker.com\"]
+}" > /etc/docker/daemon.json
+    else
+      echo "{
   \"registry-mirrors\": [\"https://mirror.gcr.io\"]
 }" > /etc/docker/daemon.json
+    fi;
+    if [ "$CN_MODE" -eq 0 ];then
+
 else
     echo "{
   \"registry-mirrors\": [
