@@ -34,6 +34,16 @@ __do_debian11_upgrade(){
     echo "[INFO] Please reboot"
 }
 
+__do_debian12_upgrade(){
+    echo "[INFO] Doing debian 12 upgrade..."
+    __do_apt_upgrade
+    sed -i 's/bullseye/bookworm/g' /etc/apt/sources.list
+    sed -i 's/bullseye/bookworm/g' /etc/apt/sources.list.d/*.list
+    sed -i 's/bullseye-security/bullseye-bookworm/g' /etc/apt/sources.list
+    __do_apt_upgrade
+    echo "[INFO] Please reboot"
+}
+
 
 echo $RELEASE | grep ' 9 '
 if [ $? -eq 0 ]; then
