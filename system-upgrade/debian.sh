@@ -56,3 +56,9 @@ if [ $? -eq 0 ]; then
     __do_debian11_upgrade
     exit 0
 fi;
+
+echo $RELEASE | grep ' 11 '
+if [ $? -eq 0 ]; then
+    __do_debian12_upgrade
+    exit 0
+fi;
